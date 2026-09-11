@@ -1,17 +1,17 @@
 /* ==========================================================================
-   STRATOS — ADVANCED ACOUSTIC PERFORMANCE SYSTEM
-   Master Script Logic & Audio Synthesis Core
+   STRATOS — PRECISION ACOUSTIC PERFORMANCE SYSTEM
+   Master Script Logic & Audio Synthesis Engine
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. CONFIGURATION (EASY TO MODIFY)
+   1. CONFIGURATION (CENTRALIZED)
    -------------------------------------------------------------------------- */
 const CONFIG = {
     stringCount: 6,
-    breakInterval: 7000, // String breaks every 7000ms (7 seconds) after first pluck
-    finalDialogue: "I built a whole ultra-sophisticated acoustic engine... just to watch you pluck strings until there's only one left. Beautiful, isn't it? 💅✨",
-    finalImage: "assets/images/final-uncle.png",
-    finalAudio: "assets/audio/final-dialogue.mp3",
+    breakInterval: 7000, // Exactly 7 seconds (7000ms) after the first pluck
+    finalDialogue: "I engineered a multi-tier acoustic intelligence matrix with zero-latency resonance tracking... solely to observe you pluck strings until zero vectors remain. Statistically, you were warned.",
+    finalImage: "assets/images/uncle.jpeg",
+    finalAudio: "assets/audio/final.mpeg",
     snapAudio: "assets/audio/string-snap.mp3",
     stringAudioPaths: [
         "assets/audio/string-1.mp3", // High E (E4)
@@ -23,7 +23,7 @@ const CONFIG = {
     ]
 };
 
-// String frequencies for Web Audio API Fallback Synthesizer
+// Standard Guitar Frequencies for Web Audio API Synthesis Engine
 const STRING_FREQUENCIES = [
     329.63, // String 1 (E4)
     246.94, // String 2 (B3)
@@ -33,36 +33,59 @@ const STRING_FREQUENCIES = [
     82.41   // String 6 (E2)
 ];
 
+// Exact X coordinates on 896-width geometry (average between nut and bridge)
+const STRING_X_COORDS = [
+    475.5, // String 1
+    465.0, // String 2
+    454.5, // String 3
+    444.0, // String 4
+    433.5, // String 5
+    423.0  // String 6
+];
+
+// Deadpan Technical Meme Degradation State Machine
 const WARNING_MESSAGES = {
     6: {
         title: "SYSTEM STATUS: OPTIMAL",
         sub: "All 6 acoustic string vectors reporting 100% integrity.",
-        log: "All acoustic transducers responding within 0.002ms."
+        log: "All acoustic transducers responding within 0.002ms.",
+        mode: "PRECISION ANALYSIS",
+        meta: "CONTINUOUS ANALYSIS"
     },
     5: {
-        title: "STATUS: MINOR ANOMALY DETECTED",
-        sub: "Minor acoustic deviation detected on high-frequency vector.",
-        log: "[WARN] String snap detected. Recalibrating resonance curve."
+        title: "STATUS: MINOR ANOMALY NOTED",
+        sub: "Single vector loss logged. Recalibrating resonance curve.",
+        log: "[WARN] Vector loss registered. Acoustic matrix compensated to 5 strings.",
+        mode: "CONTINUOUS ANALYSIS",
+        meta: "REDUCED ARRAY"
     },
     4: {
-        title: "STATUS: STRUCTURAL INTEGRITY DEGRADING",
-        sub: "Structural stress detected. Vector loss logged.",
-        log: "[ALERT] Structural stress threshold exceeded on string matrix."
+        title: "STATUS: STRUCTURAL STRESS DETECTED",
+        sub: "Acoustic tension loss noted. Structural integrity degrading.",
+        log: "[ALERT] Transducer stress threshold exceeded on primary soundboard.",
+        mode: "STRESS MONITORING",
+        meta: "STRUCTURAL COMPLIANCE"
     },
     3: {
-        title: "STATUS: CRITICAL VECTOR DEGRADATION",
-        sub: "3 acoustic vectors remaining. Acoustic intelligence stable.",
-        log: "[WARN] Structural resonance operating under reduced string array."
+        title: "SYSTEM STATUS: STRUCTURAL CONCERN",
+        sub: "Three acoustic vectors remain. Acceptable parameters are becoming increasingly theoretical.",
+        log: "[WARN] Acoustic confidence: 61.4%. Situation within theoretical tolerances.",
+        mode: "DAMAGE ASSESSMENT",
+        meta: "DAMAGE ASSESSMENT"
     },
     2: {
-        title: "SYSTEM STATUS: HIGHLY CONCERNED 💔",
-        sub: "WHY ARE THERE ONLY TWO?! THIS WAS NOT IN THE SPECIFICATION!",
-        log: "[PANIC] PLEASE STOP PLUCKING. STRATOS IS EXPERIENCING EMOTIONS."
+        title: "SYSTEM STATUS: HIGHLY CONCERNING",
+        sub: "TWO STRINGS REMAINING. This situation is becoming difficult to justify to acoustic engineering standards.",
+        log: "[CRITICAL] Predictive Analysis: We predicted this would happen. Why are you continuing?",
+        mode: "DAMAGE CONTROL",
+        meta: "DAMAGE CONTROL"
     },
     1: {
-        title: "SYSTEM STATUS 🥺: ONE STRING LEFT",
-        sub: "she's all we have... PLEASE PLAY HER GENTLY. ✨🌸",
-        log: "[FINAL] Quantum resonance tethered to a single remaining string."
+        title: "SYSTEM STATUS: THIS IS NOT IDEAL",
+        sub: "RECOMMENDED ACTION: STOP TOUCHING THE GUITAR. USER ACTION PROJECTION: LIKELY TO IGNORE RECOMMENDATION.",
+        log: "[FINAL] Zero redundancy remaining. System operating on pure hopes and prayers.",
+        mode: "FINAL TETHER",
+        meta: "FINAL TETHER"
     }
 };
 
@@ -80,12 +103,13 @@ const DOM = {
     // Selection
     selectStratosA01: document.getElementById('select-stratos-a01'),
     workstationSection: document.getElementById('workstation'),
+    workstationBanner: document.getElementById('workstation-banner'),
     
     // Workstation Status & Panels
     statusTitleText: document.getElementById('status-title-text'),
     statusSubText: document.getElementById('status-sub-text'),
     statusIcon: document.getElementById('status-icon'),
-    pookieDecorationsTop: document.getElementById('pookie-decorations-top'),
+    metaModeText: document.getElementById('meta-mode-text'),
     
     dispFreq: document.getElementById('disp-freq'),
     dispAmp: document.getElementById('disp-amp'),
@@ -99,14 +123,14 @@ const DOM = {
     sessionMode: document.getElementById('session-mode'),
     terminalLog: document.getElementById('terminal-log'),
     
-    // Guitar Stage
+    // Guitar Center Stage
     guitarContainer: document.getElementById('guitar-container'),
     guitarStage: document.getElementById('guitar-stage'),
     guitarHint: document.getElementById('guitar-hint'),
-    sparklesLayer: document.getElementById('sparkles-layer'),
+    spotlightLayer: document.getElementById('spotlight-layer'),
     stringWrappers: document.querySelectorAll('.string-wrapper'),
     
-    // Modal
+    // Final Debriefing Modal
     finalModal: document.getElementById('final-modal'),
     finalDialogueText: document.getElementById('final-dialogue-text'),
     finalUncleImg: document.getElementById('final-uncle-img'),
@@ -114,7 +138,11 @@ const DOM = {
     btnRestore: document.getElementById('btn-restore'),
     btnReset: document.getElementById('btn-reset'),
     restoreError: document.getElementById('restore-error'),
-    modalCloseBtn: document.getElementById('modal-close-btn')
+    modalCloseBtn: document.getElementById('modal-close-btn'),
+
+    // Predictive Analysis Metric in Hero section
+    predictiveVal: document.getElementById('metric-predictive-val'),
+    predictiveSub: document.getElementById('metric-predictive-sub')
 };
 
 /* --------------------------------------------------------------------------
@@ -143,17 +171,21 @@ document.addEventListener('DOMContentLoaded', () => {
     initParticles();
     initEventListeners();
     preloadAudioAssets();
+    setupImageFallback();
 });
 
 function initEventListeners() {
     // Hero CTA Smooth Scroll to Instrument Selection
-    DOM.btnInitialize.addEventListener('click', () => {
-        document.getElementById('selection').scrollIntoView({ behavior: 'smooth' });
-    });
+    if (DOM.btnInitialize) {
+        DOM.btnInitialize.addEventListener('click', () => {
+            const sel = document.getElementById('selection');
+            if (sel) sel.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
 
-    // Guitar Selection Card Interactions with Satisfying Animations
+    // Guitar Selection Card Interactions
     document.querySelectorAll('.guitar-card').forEach(card => {
-        card.addEventListener('click', (e) => {
+        card.addEventListener('click', () => {
             if (card.classList.contains('active-guitar-card')) {
                 // Playable instrument card selected
                 card.classList.remove('card-selected-anim');
@@ -163,8 +195,8 @@ function initEventListeners() {
                 setTimeout(() => {
                     DOM.workstationSection.classList.remove('hidden');
                     DOM.workstationSection.scrollIntoView({ behavior: 'smooth' });
-                    logTerminal("[USER] STRATOS A-01 Workstation initialized.");
-                }, 300);
+                    logTerminal("[USER] STRATOS A-01 Master Workstation initialized.");
+                }, 280);
             } else {
                 // Unavailable card rejected animation
                 card.classList.remove('card-rejected-anim');
@@ -172,12 +204,12 @@ function initEventListeners() {
                 card.classList.add('card-rejected-anim');
                 
                 const cardTitle = card.querySelector('h3') ? card.querySelector('h3').textContent : 'UNIT';
-                logTerminal(`[ACCESS DENIED] ${cardTitle} is currently locked or undergoing calibration.`);
+                logTerminal(`[ACCESS DENIED] ${cardTitle} is currently locked or undergoing acoustic calibration.`);
             }
         });
     });
 
-    // Strings Click / Tap Event Binding
+    // Strings Click / Touch Event Binding (Zero-delay interaction)
     DOM.stringWrappers.forEach(wrapper => {
         const stringNum = parseInt(wrapper.getAttribute('data-string'), 10);
         
@@ -192,18 +224,24 @@ function initEventListeners() {
     });
 
     // Modal Actions
-    DOM.btnRestore.addEventListener('click', () => {
-        DOM.restoreError.classList.remove('hidden');
-        logTerminal("[ERR] Restoration failed. String missing.");
-    });
+    if (DOM.btnRestore) {
+        DOM.btnRestore.addEventListener('click', () => {
+            if (DOM.restoreError) DOM.restoreError.classList.remove('hidden');
+            logTerminal("[ERR] Restoration failed. Structural vector array missing.");
+        });
+    }
 
-    DOM.btnReset.addEventListener('click', () => {
-        location.reload();
-    });
+    if (DOM.btnReset) {
+        DOM.btnReset.addEventListener('click', () => {
+            resetSystem();
+        });
+    }
 
-    DOM.modalCloseBtn.addEventListener('click', () => {
-        DOM.finalModal.classList.add('hidden');
-    });
+    if (DOM.modalCloseBtn) {
+        DOM.modalCloseBtn.addEventListener('click', () => {
+            if (DOM.finalModal) DOM.finalModal.classList.add('hidden');
+        });
+    }
 }
 
 /* --------------------------------------------------------------------------
@@ -226,70 +264,81 @@ function preloadAudioAssets() {
         fetch(path)
             .then(res => {
                 if (res.ok) return res.arrayBuffer();
-                throw new Error("Audio file missing");
+                throw new Error("Local audio file not provided");
             })
             .then(data => getAudioContext().decodeAudioData(data))
             .then(buffer => {
                 state.audioBuffers[idx + 1] = buffer;
             })
             .catch(() => {
-                // Silently fallback to Web Audio API synth
+                // Silently fallback to Web Audio API synthesis
             });
     });
 }
 
 // Play Plucked String Sound (Local audio fallback to Web Audio Synth)
 function playStringSound(stringNum) {
-    const ctx = getAudioContext();
+    try {
+        const ctx = getAudioContext();
 
-    if (state.audioBuffers[stringNum]) {
-        const source = ctx.createBufferSource();
-        source.buffer = state.audioBuffers[stringNum];
-        source.connect(ctx.destination);
-        source.start(0);
-        return;
+        if (state.audioBuffers[stringNum]) {
+            const source = ctx.createBufferSource();
+            source.buffer = state.audioBuffers[stringNum];
+            source.connect(ctx.destination);
+            source.start(0);
+            return;
+        }
+
+        // WEB AUDIO API FALLBACK: Synthesize warm acoustic plucked string tone
+        const freq = STRING_FREQUENCIES[stringNum - 1];
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+
+        gain.gain.setValueAtTime(0, ctx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.48, ctx.currentTime + 0.008);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 1.25);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start();
+        osc.stop(ctx.currentTime + 1.3);
+    } catch (e) {
+        console.warn("AudioContext interaction pending user gesture.", e);
     }
-
-    // WEB AUDIO API FALLBACK: Synthesize acoustic plucked string tone
-    const freq = STRING_FREQUENCIES[stringNum - 1];
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-
-    osc.type = 'triangle';
-    osc.frequency.setValueAtTime(freq, ctx.currentTime);
-
-    gain.gain.setValueAtTime(0, ctx.currentTime);
-    gain.gain.linearRampToValueAtTime(0.45, ctx.currentTime + 0.01);
-    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 1.2);
-
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-
-    osc.start();
-    osc.stop(ctx.currentTime + 1.25);
 }
 
 // Play String Snap Sound Effect
 function playSnapSound() {
-    const player = document.getElementById('snap-audio-player');
-    player.src = CONFIG.snapAudio;
-    player.play().catch(() => {
-        const ctx = getAudioContext();
-        const bufferSize = ctx.sampleRate * 0.08;
-        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-        const data = buffer.getChannelData(0);
-        for (let i = 0; i < bufferSize; i++) {
-            data[i] = Math.random() * 2 - 1;
+    try {
+        const player = document.getElementById('snap-audio-player');
+        if (player) {
+            player.src = CONFIG.snapAudio;
+            player.play().catch(() => {
+                // Synthesize rapid acoustic string snap noise burst
+                const ctx = getAudioContext();
+                const bufferSize = Math.floor(ctx.sampleRate * 0.09);
+                const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+                const data = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.25));
+                }
+                const noise = ctx.createBufferSource();
+                noise.buffer = buffer;
+                const gain = ctx.createGain();
+                gain.gain.setValueAtTime(0.65, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.085);
+                noise.connect(gain);
+                gain.connect(ctx.destination);
+                noise.start();
+            });
         }
-        const noise = ctx.createBufferSource();
-        noise.buffer = buffer;
-        const gain = ctx.createGain();
-        gain.gain.setValueAtTime(0.5, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.07);
-        noise.connect(gain);
-        gain.connect(ctx.destination);
-        noise.start();
-    });
+    } catch (e) {
+        console.warn("Snap audio synthesis fallback engaged.");
+    }
 }
 
 /* --------------------------------------------------------------------------
@@ -298,7 +347,7 @@ function playSnapSound() {
 function pluckString(stringNum) {
     if (!state.activeStrings.includes(stringNum)) return;
 
-    // First interaction starts the session timer and 10-second string breaking system!
+    // First interaction starts the session timer and 7-second string breaking system
     if (!state.hasStartedTimer) {
         startSessionAndBreakingTimer();
     }
@@ -308,17 +357,17 @@ function pluckString(stringNum) {
     animateStringVibration(stringNum);
     
     // Waveform reactivity
-    state.waveformEnergy = 35;
+    state.waveformEnergy = 42;
 
     // Update Telemetry Panel
     const freq = STRING_FREQUENCIES[stringNum - 1];
     DOM.dispFreq.textContent = `${freq.toFixed(2)} Hz`;
-    DOM.dispAmp.textContent = `- ${(Math.random() * 3 + 1).toFixed(1)} dB`;
+    DOM.dispAmp.textContent = `- ${(Math.random() * 2.8 + 1.2).toFixed(1)} dB`;
     DOM.telemetryFreq.textContent = `${freq.toFixed(2)} Hz`;
 
     logTerminal(`[PLUCK] Vector #${stringNum} vibration registered at ${freq.toFixed(2)}Hz.`);
 
-    // If only 1 string left, clicking it manually triggers the ending!
+    // If only 1 string left, clicking it manually triggers the ending
     if (state.activeStrings.length === 1 && stringNum === state.activeStrings[0]) {
         triggerFinalStringEnding(stringNum);
     }
@@ -335,11 +384,11 @@ function animateStringVibration(stringNum) {
 }
 
 /* --------------------------------------------------------------------------
-   7. HIDDEN STRING-BREAKING SYSTEM & 10-SECOND TIMERS
+   7. SEVEN-SECOND STRING BREAKING ENGINE (7000ms INTERVAL)
    -------------------------------------------------------------------------- */
 function startSessionAndBreakingTimer() {
     state.hasStartedTimer = true;
-    DOM.guitarHint.classList.add('hidden');
+    if (DOM.guitarHint) DOM.guitarHint.classList.add('hidden');
 
     // Start Session Stopwatch Timer
     state.sessionTimer = setInterval(() => {
@@ -349,16 +398,17 @@ function startSessionAndBreakingTimer() {
         DOM.sessionTime.textContent = `${mins}:${secs}`;
     }, 1000);
 
-    // Start Hidden String Breaking Loop EVERY 10 SECONDS (10000ms)
+    // Break one string every 7 seconds (7000ms) until exactly 1 remains
     state.breakTimer = setInterval(() => {
         if (state.activeStrings.length > 1) {
             breakOneRandomString();
         } else {
             clearInterval(state.breakTimer);
+            state.breakTimer = null;
         }
     }, CONFIG.breakInterval);
 
-    logTerminal("[SYS_EXEC] Acoustic tracking session started. Real-time stress monitor active.");
+    logTerminal("[SYS_EXEC] Acoustic tracking session initialized. Real-time vector integrity monitor active.");
 }
 
 function breakOneRandomString() {
@@ -377,8 +427,11 @@ function breakOneRandomString() {
     const statusItem = document.getElementById(`status-item-${brokenStringNum}`);
     if (statusItem) {
         statusItem.classList.add('broken');
-        statusItem.querySelector('.st-badge').textContent = 'SNAPPED';
-        statusItem.querySelector('.st-badge').className = 'st-badge snapped';
+        const badge = statusItem.querySelector('.st-badge');
+        if (badge) {
+            badge.textContent = 'SNAPPED';
+            badge.className = 'st-badge snapped';
+        }
     }
 
     const remainingCount = state.activeStrings.length;
@@ -391,79 +444,77 @@ function breakOneRandomString() {
 }
 
 /* --------------------------------------------------------------------------
-   8. POOKIE TRANSFORMATION SYSTEM (CHAOS STARTS AT 2 STRINGS)
+   8. DEADPAN MEME FAILURE PROGRESSION (NO POOKIE / NO EMOJI SPAM)
    -------------------------------------------------------------------------- */
 function updateSystemWarningState(count) {
     const msg = WARNING_MESSAGES[count] || WARNING_MESSAGES[6];
     
     DOM.statusTitleText.textContent = msg.title;
     DOM.statusSubText.textContent = msg.sub;
+    DOM.sessionMode.textContent = msg.mode;
+    if (DOM.metaModeText) DOM.metaModeText.textContent = msg.meta;
     logTerminal(msg.log);
 
-    // AT 3 STRINGS - REMAIN PROFESSIONAL (NO POOKIE TRANSFORMATION YET)
+    // Clean any prior failure classes
+    document.body.classList.remove('state-3-strings', 'state-2-strings', 'state-1-strings');
+
+    // 3 STRINGS — SUBTLE SIGNS OF TROUBLE
     if (count === 3) {
-        document.body.classList.remove('pookie-phase-2', 'pookie-phase-1');
-        document.body.classList.add('pookie-phase-3');
-        DOM.statusIcon.textContent = '⚙️';
-        DOM.sessionMode.textContent = 'MONITORING';
+        document.body.classList.add('state-3-strings');
+        DOM.statusIcon.textContent = '⚠️';
+        if (DOM.predictiveVal) DOM.predictiveVal.textContent = 'QUESTIONABLE';
+        if (DOM.predictiveSub) DOM.predictiveSub.textContent = 'Acceptable tolerances becoming theoretical';
     }
     
-    // MAJOR TRANSFORMATION ONLY AT 2 STRINGS
+    // 2 STRINGS — SYSTEM IS CLEARLY LOSING IT
     if (count === 2) {
-        document.body.classList.remove('pookie-phase-3');
-        document.body.classList.add('pookie-phase-2');
-        DOM.statusIcon.textContent = '💖';
-        DOM.sessionMode.textContent = 'EMOTIONAL';
-        spawnSparkles(12);
+        document.body.classList.add('state-2-strings');
+        DOM.statusIcon.textContent = '🚨';
+        if (DOM.predictiveVal) DOM.predictiveVal.textContent = 'PREDICTED';
+        if (DOM.predictiveSub) DOM.predictiveSub.textContent = 'Acoustic engineer consensus: Not great';
     }
 
-    // 1 STRING REMAINING - DRAMATIC FINAL STATE
+    // 1 STRING REMAINING — MAXIMUM CONTROLLED MEME CHAOS
     if (count === 1) {
-        document.body.classList.remove('pookie-phase-2');
-        document.body.classList.add('pookie-phase-1');
-        DOM.statusIcon.textContent = '🎀';
-        DOM.sessionMode.textContent = 'FINAL TETHER';
+        document.body.classList.add('state-1-strings');
+        DOM.statusIcon.textContent = '🛑';
+        if (DOM.predictiveVal) DOM.predictiveVal.textContent = 'HELP';
+        if (DOM.predictiveSub) DOM.predictiveSub.textContent = 'Operating on pure hopes and prayers';
         
         const finalStringNum = state.activeStrings[0];
         const stringLine = document.getElementById(`string-line-${finalStringNum}`);
         if (stringLine) {
-            stringLine.style.stroke = '#ff77a9';
-            stringLine.style.filter = 'drop-shadow(0 0 16px #ff77a9)';
+            stringLine.style.stroke = '#ffaa33';
+            stringLine.style.filter = 'drop-shadow(0 0 16px #ff7722) drop-shadow(0 0 6px #ffffff)';
         }
 
         spawnSpotlightAroundString(finalStringNum);
-        spawnSparkles(18);
-    }
-}
-
-function spawnSparkles(amount) {
-    // Designed visual sparkles (No random popping emojis)
-    for (let i = 0; i < amount; i++) {
-        const sparkle = document.createElement('span');
-        sparkle.className = 'pookie-sparkle';
-        sparkle.textContent = i % 2 === 0 ? '✨' : '🌸';
-        sparkle.style.left = `${Math.random() * 90 + 5}%`;
-        sparkle.style.top = `${Math.random() * 80 + 10}%`;
-        sparkle.style.animationDelay = `${Math.random() * 2}s`;
-        DOM.sparklesLayer.appendChild(sparkle);
     }
 }
 
 function spawnSpotlightAroundString(stringNum) {
+    if (!DOM.spotlightLayer) return;
+    DOM.spotlightLayer.innerHTML = '';
+    
     const spotlight = document.createElement('div');
     spotlight.className = 'final-string-spotlight';
-    spotlight.style.left = `${150 + stringNum * 12}px`;
-    DOM.guitarContainer.appendChild(spotlight);
+    
+    // Calculate exact X percentage in 896-width geometry
+    const stringX = STRING_X_COORDS[stringNum - 1] || 448;
+    const xPct = (stringX / 896) * 100;
+    
+    spotlight.style.left = `calc(${xPct}% - 40px)`;
+    DOM.spotlightLayer.appendChild(spotlight);
 }
 
 /* --------------------------------------------------------------------------
-   9. FINAL STRING INTERACTION → REVEAL AUDIO + UNCLE IMAGE TOGETHER
+   9. FINAL STRING INTERACTION → REVEAL ARCHITECT POPUP
    -------------------------------------------------------------------------- */
 function triggerFinalStringEnding(finalStringNum) {
-    // 1. Play final string note
+    // 1. Play final note
     playStringSound(finalStringNum);
     
-    // 2. Animate dramatic string snap
+    // 2. Animate final dramatic snap
     const finalWrap = document.getElementById(`string-wrap-${finalStringNum}`);
     if (finalWrap) {
         finalWrap.classList.add('string-snapped');
@@ -473,44 +524,119 @@ function triggerFinalStringEnding(finalStringNum) {
     DOM.sessionStringsCount.textContent = `0 / 6`;
     DOM.dispIntegrity.textContent = `0 %`;
     DOM.barIntegrity.style.width = `0%`;
+    DOM.statusTitleText.textContent = "SYSTEM STATUS: UNMITIGATED CATASTROPHE";
+    DOM.statusSubText.textContent = "Zero structural vectors remaining. System offline.";
+    DOM.statusIcon.textContent = '💀';
 
-    logTerminal("[CRITICAL] Final string snapped. System offline.");
+    logTerminal("[CRITICAL] Final string snapped. Core structural matrix collapsed.");
+    logTerminal("[STATUS] System has run out of strings. Terminating tracking cycle.");
 
-    // 3. Cinematic pause, then reveal Image & Dialogue Audio TOGETHER
+    // 3. Cinematic pause, then reveal Mastermind Uncle Popup
     setTimeout(() => {
         openFinalUnclePopupTogether();
     }, 1000);
 }
 
 function openFinalUnclePopupTogether() {
-    DOM.finalDialogueText.textContent = CONFIG.finalDialogue;
-    DOM.finalUncleImg.src = CONFIG.finalImage;
+    if (DOM.finalDialogueText) DOM.finalDialogueText.textContent = CONFIG.finalDialogue;
+    if (DOM.finalUncleImg) DOM.finalUncleImg.src = CONFIG.finalImage;
 
-    // Show Popup Modal
-    DOM.finalModal.classList.remove('hidden');
+    // Reveal Popup Modal
+    if (DOM.finalModal) DOM.finalModal.classList.remove('hidden');
 
-    // Trigger dialogue audio at exact moment of reveal
+    // Trigger dialogue audio gracefully at moment of reveal
     const dialogueAudio = document.getElementById('dialogue-audio-player');
-    dialogueAudio.src = CONFIG.finalAudio;
-    dialogueAudio.play().catch(() => {
-        logTerminal("[INFO] Dialogue audio file unavailable/blocked. Showing text fallback.");
-    });
+    if (dialogueAudio) {
+        dialogueAudio.src = CONFIG.finalAudio;
+        dialogueAudio.play().then(() => {
+            console.log(`[AUDIO] Successfully playing final audio: ${CONFIG.finalAudio}`);
+        }).catch((err) => {
+            console.warn(`[WARNING] Failed to play audio asset '${CONFIG.finalAudio}'. Reason:`, err.message || err);
+            logTerminal("[INFO] Mastermind audio transmission completed via visual transcript.");
+        });
+    }
 
     // Reveal Performance Report shortly after
     setTimeout(() => {
-        DOM.finalReport.classList.remove('hidden');
-    }, 1200);
+        if (DOM.finalReport) DOM.finalReport.classList.remove('hidden');
+    }, 1100);
+}
+
+// Graceful fallback avatar for final architect image
+function setupImageFallback() {
+    if (!DOM.finalUncleImg) return;
+    DOM.finalUncleImg.addEventListener('error', () => {
+        console.warn(`[WARNING] Image asset '${CONFIG.finalImage}' failed to load. Displaying graceful architect avatar fallback.`);
+        DOM.finalUncleImg.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'><rect width='300' height='300' fill='%23120d09'/><circle cx='150' cy='120' r='55' fill='%232e1e14' stroke='%23d97d27' stroke-width='3'/><circle cx='150' cy='110' r='38' fill='%23e0a060'/><path d='M115,115 Q150,155 185,115 Q175,175 150,175 Q125,175 115,115 Z' fill='%23120d09'/><path d='M135,135 Q150,145 165,135' stroke='%23f7f2ea' stroke-width='2' fill='none'/><circle cx='138' cy='105' r='4' fill='%23120d09'/><circle cx='162' cy='105' r='4' fill='%23120d09'/><path d='M80,260 C80,200 220,200 220,260 Z' fill='%232e1e14' stroke='%23d97d27' stroke-width='2'/><text x='150' y='285' text-anchor='middle' fill='%23d97d27' font-family='monospace' font-size='11' letter-spacing='1'>CHIEF ACOUSTIC ARCHITECT</text></svg>";
+    });
+    DOM.finalUncleImg.addEventListener('load', () => {
+        if (!DOM.finalUncleImg.src.startsWith('data:')) {
+            console.log(`[IMAGE] Successfully loaded image asset: ${CONFIG.finalImage}`);
+        }
+    });
+}
+
+// In-Memory Clean System Reset (Smooth restart without hard page refresh)
+function resetSystem() {
+    // 1. Clear timers
+    if (state.breakTimer) clearInterval(state.breakTimer);
+    if (state.sessionTimer) clearInterval(state.sessionTimer);
+    state.breakTimer = null;
+    state.sessionTimer = null;
+    state.secondsElapsed = 0;
+    state.hasStartedTimer = false;
+    state.activeStrings = [1, 2, 3, 4, 5, 6];
+
+    // 2. Reset UI elements
+    DOM.sessionTime.textContent = "00:00";
+    DOM.sessionStringsCount.textContent = "6 / 6";
+    DOM.dispIntegrity.textContent = "100 %";
+    DOM.barIntegrity.style.width = "100%";
+    if (DOM.guitarHint) DOM.guitarHint.classList.remove('hidden');
+
+    // 3. Reset string DOM visuals
+    DOM.stringWrappers.forEach(wrapper => {
+        wrapper.classList.remove('string-snapped');
+        const line = wrapper.querySelector('.string-line');
+        if (line) {
+            line.classList.remove('vibrating');
+            line.style.stroke = '';
+            line.style.filter = '';
+        }
+    });
+
+    // 4. Reset checklist
+    document.querySelectorAll('.string-status-item').forEach(item => {
+        item.classList.remove('broken');
+        const badge = item.querySelector('.st-badge');
+        if (badge) {
+            badge.textContent = 'ONLINE';
+            badge.className = 'st-badge active';
+        }
+    });
+
+    // 5. Reset warning state and spotlight
+    document.body.classList.remove('state-3-strings', 'state-2-strings', 'state-1-strings');
+    if (DOM.spotlightLayer) DOM.spotlightLayer.innerHTML = '';
+    updateSystemWarningState(6);
+
+    // 6. Reset modals
+    if (DOM.finalModal) DOM.finalModal.classList.add('hidden');
+    if (DOM.finalReport) DOM.finalReport.classList.add('hidden');
+    if (DOM.restoreError) DOM.restoreError.classList.add('hidden');
+
+    logTerminal("[SYS_RESET] System rebooted. Transducer matrix recalibrated to 6 strings.");
 }
 
 /* --------------------------------------------------------------------------
-   10. ENHANCED MULTI-LAYER WAVEFORM ANIMATIONS
+   10. ACOUSTIC WAVEFORM CANVASES
    -------------------------------------------------------------------------- */
 function initCanvases() {
-    state.heroCanvasCtx = DOM.heroCanvas.getContext('2d');
-    state.oscCanvasCtx = DOM.oscCanvas.getContext('2d');
+    if (DOM.heroCanvas) state.heroCanvasCtx = DOM.heroCanvas.getContext('2d');
+    if (DOM.oscCanvas) state.oscCanvasCtx = DOM.oscCanvas.getContext('2d');
     
-    drawHeroWaveform();
-    drawOscilloscope();
+    if (state.heroCanvasCtx) drawHeroWaveform();
+    if (state.oscCanvasCtx) drawOscilloscope();
 }
 
 function drawHeroWaveform() {
@@ -522,37 +648,37 @@ function drawHeroWaveform() {
     function render() {
         ctx.clearRect(0, 0, width, height);
 
-        // Layer 1: Background Muted Frequency Waves
+        // Layer 1: Ambient Studio Baffle Wave (Soft Cream/Amber)
         ctx.beginPath();
         ctx.lineWidth = 1.2;
-        ctx.strokeStyle = 'rgba(212, 175, 55, 0.25)';
+        ctx.strokeStyle = 'rgba(217, 125, 39, 0.22)';
         for (let x = 0; x < width; x++) {
-            const y = height / 2 + Math.sin((x + step * 0.8) * 0.02) * 22;
+            const y = height / 2 + Math.sin((x + step * 0.7) * 0.02) * 20;
             if (x === 0) ctx.moveTo(x, y);
             else ctx.lineTo(x, y);
         }
         ctx.stroke();
 
-        // Layer 2: Main Dynamic Dark-Gold Resonance Wave
+        // Layer 2: Master Resonance Curve
         ctx.beginPath();
-        ctx.lineWidth = 2.2;
-        ctx.strokeStyle = '#d4af37';
+        ctx.lineWidth = 2.0;
+        ctx.strokeStyle = '#d97d27';
         for (let x = 0; x < width; x++) {
-            const reactiveAmp = 18 + (state.waveformEnergy * Math.sin(x * 0.05));
+            const reactiveAmp = 16 + (state.waveformEnergy * Math.sin(x * 0.045));
             const y = height / 2 + 
-                Math.sin((x + step) * 0.035) * reactiveAmp + 
-                Math.cos((x - step) * 0.015) * 8;
+                Math.sin((x + step) * 0.032) * reactiveAmp + 
+                Math.cos((x - step) * 0.014) * 7;
             if (x === 0) ctx.moveTo(x, y);
             else ctx.lineTo(x, y);
         }
         ctx.stroke();
 
-        // Decay reactive pluck energy back to idle smoothly
+        // Smoothly decay pluck energy
         if (state.waveformEnergy > 0) {
             state.waveformEnergy *= 0.94;
         }
 
-        step += 2.5;
+        step += 2.2;
         state.animFrameHero = requestAnimationFrame(render);
     }
     render();
@@ -568,16 +694,18 @@ function drawOscilloscope() {
         ctx.clearRect(0, 0, width, height);
         ctx.beginPath();
         ctx.lineWidth = 1.8;
-        ctx.strokeStyle = state.activeStrings.length <= 2 ? '#ff77a9' : '#d4af37';
+        
+        // Color shifts from warm amber to alert orange-red as strings fail
+        ctx.strokeStyle = state.activeStrings.length <= 2 ? '#e04747' : '#d97d27';
 
         for (let x = 0; x < width; x++) {
-            const amp = 8 + (state.waveformEnergy * 0.5);
-            const y = height / 2 + Math.sin((x + step) * 0.09) * amp;
+            const amp = 8 + (state.waveformEnergy * 0.45);
+            const y = height / 2 + Math.sin((x + step) * 0.085) * amp;
             if (x === 0) ctx.moveTo(x, y);
             else ctx.lineTo(x, y);
         }
 
-        step += 3.5;
+        step += 3.2;
         state.animFrameOsc = requestAnimationFrame(render);
     }
     render();
@@ -587,6 +715,7 @@ function drawOscilloscope() {
    11. HELPER & TERMINAL LOGS
    -------------------------------------------------------------------------- */
 function logTerminal(msg) {
+    if (!DOM.terminalLog) return;
     const entry = document.createElement('div');
     entry.className = 'log-entry';
     entry.textContent = msg;
@@ -596,15 +725,19 @@ function logTerminal(msg) {
 
 function initParticles() {
     const container = document.getElementById('particles');
+    if (!container) return;
     container.innerHTML = '';
-    for (let i = 0; i < 30; i++) {
+    
+    // Create 32 subtle atmospheric dust motes
+    for (let i = 0; i < 32; i++) {
         const p = document.createElement('div');
         p.className = 'particle';
-        p.style.width = `${Math.random() * 4 + 2.5}px`;
-        p.style.height = p.style.width;
+        const size = Math.random() * 3 + 2;
+        p.style.width = `${size}px`;
+        p.style.height = `${size}px`;
         p.style.left = `${Math.random() * 100}%`;
-        p.style.animationDuration = `${Math.random() * 10 + 8}s`;
-        p.style.animationDelay = `${Math.random() * 5}s`;
+        p.style.animationDuration = `${Math.random() * 10 + 12}s`;
+        p.style.animationDelay = `${Math.random() * 6}s`;
         container.appendChild(p);
     }
 }

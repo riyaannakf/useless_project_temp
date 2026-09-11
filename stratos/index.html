@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STRATOS — Advanced Acoustic Performance System</title>
-    <meta name="description" content="Precision acoustic intelligence for next-generation performance. High-fidelity acoustic analysis, resonance tracking, and structural monitoring platform.">
+    <title>STRATOS — Precision Acoustic Studio Performance System</title>
+    <meta name="description" content="Master-grade acoustic intelligence and structural resonance tracking engine for precision guitar performance monitoring.">
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Luxury Serif & Studio Monospace -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Fredoka+One&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Sophisticated Layered Background System -->
-    <div class="bg-grid"></div>
-    <div class="bg-tech-overlay"></div>
-    <div class="bg-glow bg-glow-1"></div>
-    <div class="bg-glow bg-glow-2"></div>
+    <!-- Cinematic Recording Studio Atmosphere Layers -->
+    <div class="bg-studio-room"></div>
+    <div class="bg-acoustic-lines"></div>
+    <div class="bg-amber-warmth bg-glow-left"></div>
+    <div class="bg-amber-warmth bg-glow-right"></div>
     <div class="particles-container" id="particles"></div>
 
     <!-- Navigation Header -->
@@ -31,7 +31,7 @@
                     <line x1="12" y1="2" x2="12" y2="22" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2"/>
                 </svg>
             </div>
-            <span class="brand-name">STRATOS <span class="brand-sub">v4.8.2</span></span>
+            <span class="brand-name">STRATOS <span class="brand-sub">STUDIO v4.8.2</span></span>
         </div>
         <div class="header-status">
             <span class="status-dot green" id="header-dot"></span>
@@ -43,10 +43,10 @@
         <!-- LANDING HERO SECTION -->
         <section id="hero" class="hero-section">
             <div class="hero-content">
-                <div class="badge">ACOUSTIC INTELLIGENCE ENGINE</div>
+                <div class="badge">STUDIO ACOUSTIC INTELLIGENCE SUITE</div>
                 <h1 class="hero-title">STRATOS</h1>
-                <p class="hero-subtitle">Advanced Acoustic Performance System</p>
-                <p class="hero-desc">Precision acoustic intelligence for next-generation performance and real-time resonance spectrum tracking.</p>
+                <p class="hero-subtitle">Precision Acoustic Performance & Structural Telemetry</p>
+                <p class="hero-desc">Master-grade acoustic intelligence for real-time resonance spectrum tracking, harmonic stress analysis, and structural vector integrity.</p>
                 
                 <div class="hero-actions">
                     <button class="btn btn-primary" id="btn-initialize">
@@ -76,11 +76,11 @@
             </div>
         </section>
 
-        <!-- FAKE PERFORMANCE METRICS SECTION -->
+        <!-- CORE PERFORMANCE METRICS SECTION -->
         <section id="metrics" class="metrics-section">
             <div class="section-header">
                 <h2>CORE PERFORMANCE METRICS</h2>
-                <p>Real-time telemetry monitored by quantum resonance transducers.</p>
+                <p>Real-time telemetry monitored via studio-grade piezoelectric acoustic transducers.</p>
             </div>
             
             <div class="metrics-grid">
@@ -88,28 +88,28 @@
                     <div class="metric-label">RESONANCE ACCURACY</div>
                     <div class="metric-value">99.97<span class="unit">%</span></div>
                     <div class="metric-bar"><div class="metric-progress" style="width: 99.97%;"></div></div>
-                    <div class="metric-sub">Calibrated to ultra-sonic tolerances</div>
+                    <div class="metric-sub">Calibrated to studio reference tolerances</div>
                 </div>
 
                 <div class="metric-card glass-panel">
                     <div class="metric-label">ACOUSTIC RESPONSE</div>
                     <div class="metric-value">0.002<span class="unit">ms</span></div>
                     <div class="metric-bar"><div class="metric-progress" style="width: 98%;"></div></div>
-                    <div class="metric-sub">Zero-latency neural processing</div>
+                    <div class="metric-sub">Zero-latency transducer monitoring</div>
                 </div>
 
                 <div class="metric-card glass-panel">
                     <div class="metric-label">TONAL RESOLUTION</div>
                     <div class="metric-value">24<span class="unit">-bit</span></div>
                     <div class="metric-bar"><div class="metric-progress" style="width: 95%;"></div></div>
-                    <div class="metric-sub">192kHz floating point precision</div>
+                    <div class="metric-sub">192kHz floating-point acoustic precision</div>
                 </div>
 
                 <div class="metric-card glass-panel">
                     <div class="metric-label">PREDICTIVE ANALYSIS</div>
-                    <div class="metric-value status-active">ACTIVE</div>
-                    <div class="metric-bar"><div class="metric-progress pulsating" style="width: 100%;"></div></div>
-                    <div class="metric-sub">Structural stress vector algorithm</div>
+                    <div class="metric-value status-active" id="metric-predictive-val">ACTIVE</div>
+                    <div class="metric-bar"><div class="metric-progress pulsating" id="metric-predictive-bar" style="width: 100%;"></div></div>
+                    <div class="metric-sub" id="metric-predictive-sub">Structural tension vector algorithm</div>
                 </div>
             </div>
         </section>
@@ -117,8 +117,8 @@
         <!-- GUITAR SELECTION SECTION -->
         <section id="selection" class="selection-section">
             <div class="section-header">
-                <h2>SELECT PERFORMANCE INSTRUMENT</h2>
-                <p>Choose an acoustic unit for real-time resonance tracking.</p>
+                <h2>STUDIO INSTRUMENT SELECTION</h2>
+                <p>Select a master-built acoustic unit for real-time resonance and stress monitoring.</p>
             </div>
 
             <div class="guitar-cards-grid">
@@ -126,14 +126,11 @@
                 <div class="guitar-card glass-panel active-guitar-card" id="select-stratos-a01">
                     <div class="guitar-card-badge">RECOMMENDED</div>
                     <div class="guitar-preview-icon">
-                        <img src="assets/images/guitar.png" alt="STRATOS A-01 Acoustic Unit" style="height: 110px; width: auto; filter: drop-shadow(0 0 10px rgba(212,175,55,0.3));" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                        <svg width="60" height="120" viewBox="0 0 60 120" fill="none" style="display:none;">
-                            <path d="M 30,10 L 30,40 M 18,40 C 18,40 8,65 14,85 C 17,97 22,108 30,108 C 38,108 43,97 46,85 C 52,65 42,40 42,40 Z" stroke="var(--accent-gold)" stroke-width="2" fill="rgba(212, 175, 55, 0.08)"/>
-                        </svg>
+                        <img src="assets/images/guitar.png" alt="STRATOS A-01 Master Acoustic Rig" class="guitar-preview-thumb">
                     </div>
                     <h3>STRATOS A-01</h3>
-                    <p class="guitar-type">Custom Dark-Gold Acoustic Rig</p>
-                    <div class="guitar-status-tag status-available">STATUS: AVAILABLE</div>
+                    <p class="guitar-type">Master Mahogany Dreadnought Rig</p>
+                    <div class="guitar-status-tag status-available">STATUS: READY FOR PLUCK</div>
                     <button class="btn btn-primary btn-block select-guitar-btn">LAUNCH WORKSTATION</button>
                 </div>
 
@@ -141,12 +138,12 @@
                 <div class="guitar-card glass-panel disabled-card" id="select-stratos-a02">
                     <div class="guitar-preview-icon dimmed">
                         <svg width="60" height="120" viewBox="0 0 60 120" fill="none">
-                            <path d="M 30,10 L 30,40 M 22,40 C 22,40 12,65 17,85 C 20,97 24,108 30,108 C 36,108 40,97 43,85 C 48,65 38,40 38,40 Z" stroke="#666" stroke-width="1.5"/>
-                            <circle cx="30" cy="80" r="8" stroke="#666" stroke-width="1"/>
+                            <path d="M 30,10 L 30,40 M 22,40 C 22,40 12,65 17,85 C 20,97 24,108 30,108 C 36,108 40,97 43,85 C 48,65 38,40 38,40 Z" stroke="#665c52" stroke-width="1.5"/>
+                            <circle cx="30" cy="80" r="8" stroke="#665c52" stroke-width="1"/>
                         </svg>
                     </div>
                     <h3>STRATOS A-02</h3>
-                    <p class="guitar-type">Mahogany Dreadnought Array</p>
+                    <p class="guitar-type">Rosewood Concert Array</p>
                     <div class="guitar-status-tag status-calibrating">CALIBRATION REQUIRED</div>
                     <button class="btn btn-disabled btn-block" disabled>UNAVAILABLE</button>
                 </div>
@@ -154,11 +151,11 @@
                 <div class="guitar-card glass-panel disabled-card" id="select-stratos-a03">
                     <div class="guitar-preview-icon dimmed">
                         <svg width="60" height="120" viewBox="0 0 60 120" fill="none">
-                            <path d="M 30,10 L 30,40 M 20,40 C 20,40 10,65 15,85 C 18,97 22,108 30,108 C 38,108 42,97 45,85 C 50,65 40,40 40,40 Z" stroke="#555" stroke-width="1.5"/>
+                            <path d="M 30,10 L 30,40 M 20,40 C 20,40 10,65 15,85 C 18,97 22,108 30,108 C 38,108 42,97 45,85 C 50,65 40,40 40,40 Z" stroke="#554d45" stroke-width="1.5"/>
                         </svg>
                     </div>
                     <h3>STRATOS A-03</h3>
-                    <p class="guitar-type">Quantum Spruce Parlor</p>
+                    <p class="guitar-type">Alpine Spruce Parlor Rig</p>
                     <div class="guitar-status-tag status-soon">COMING SOON</div>
                     <button class="btn btn-disabled btn-block" disabled>LOCKED</button>
                 </div>
@@ -166,13 +163,13 @@
                 <div class="guitar-card glass-panel disabled-card" id="select-stratos-xpro">
                     <div class="guitar-preview-icon dimmed">
                         <svg width="60" height="120" viewBox="0 0 60 120" fill="none">
-                            <path d="M 30,10 L 30,40 M 18,40 C 18,40 8,65 13,85 C 16,97 22,108 30,108 C 38,108 44,97 47,85 C 52,65 42,40 42,40 Z" stroke="#555" stroke-width="1.5"/>
+                            <path d="M 30,10 L 30,40 M 18,40 C 18,40 8,65 13,85 C 16,97 22,108 30,108 C 38,108 44,97 47,85 C 52,65 42,40 42,40 Z" stroke="#554d45" stroke-width="1.5"/>
                         </svg>
                     </div>
                     <h3>STRATOS X-PRO</h3>
-                    <p class="guitar-type">Titanium Resonance Rig</p>
-                    <div class="guitar-status-tag status-premium">PREMIUM ACCESS</div>
-                    <button class="btn btn-disabled btn-block" disabled>REQUIRES LICENSE</button>
+                    <p class="guitar-type">Custom Carbon Archtop Suite</p>
+                    <div class="guitar-status-tag status-premium">STUDIO LICENSE REQ</div>
+                    <button class="btn btn-disabled btn-block" disabled>REQUIRES KEY</button>
                 </div>
             </div>
         </section>
@@ -180,7 +177,7 @@
         <!-- MAIN GUITAR INTERFACE WORKSTATION -->
         <section id="workstation" class="workstation-section hidden">
             <!-- Top Workstation Header & Warning Strip -->
-            <div class="workstation-banner glass-panel">
+            <div class="workstation-banner glass-panel" id="workstation-banner">
                 <div class="system-status-indicator" id="status-indicator-box">
                     <span class="status-icon" id="status-icon">⚙️</span>
                     <div class="status-info">
@@ -188,7 +185,10 @@
                         <div class="status-subtitle" id="status-sub-text">All 6 acoustic string vectors reporting 100% integrity.</div>
                     </div>
                 </div>
-                <div class="pookie-decorations" id="pookie-decorations-top"></div>
+                <div class="status-meta-pill" id="status-meta-pill">
+                    <span class="meta-label">DIAGNOSTIC MODE:</span>
+                    <span class="meta-val" id="meta-mode-text">CONTINUOUS ANALYSIS</span>
+                </div>
             </div>
 
             <!-- Workspace Grid (Left Panel, Guitar Center, Right Panel) -->
@@ -202,25 +202,25 @@
 
                     <div class="panel-metrics-list">
                         <div class="panel-metric-item">
-                            <div class="p-lbl">MAIN FREQUENCY</div>
+                            <div class="p-lbl">HARMONIC FREQUENCY</div>
                             <div class="p-val" id="disp-freq">440.00 Hz</div>
                             <div class="p-bar"><div class="p-fill" id="bar-freq" style="width: 75%;"></div></div>
                         </div>
 
                         <div class="panel-metric-item">
-                            <div class="p-lbl">AMPLITUDE VECTORS</div>
+                            <div class="p-lbl">TRANSDUCER OUTPUT</div>
                             <div class="p-val" id="disp-amp">0.00 dB</div>
                             <div class="p-bar"><div class="p-fill" id="bar-amp" style="width: 20%;"></div></div>
                         </div>
 
                         <div class="panel-metric-item">
-                            <div class="p-lbl">RESONANCE DENSITY</div>
-                            <div class="p-val" id="disp-res">98.4 %</div>
-                            <div class="p-bar"><div class="p-fill" id="bar-res" style="width: 98%;"></div></div>
+                            <div class="p-lbl">RESONANCE STABILITY</div>
+                            <div class="p-val" id="disp-res">99.4 %</div>
+                            <div class="p-bar"><div class="p-fill" id="bar-res" style="width: 99%;"></div></div>
                         </div>
 
                         <div class="panel-metric-item">
-                            <div class="p-lbl">STRING INTEGRITY</div>
+                            <div class="p-lbl">STRING MATRIX INTEGRITY</div>
                             <div class="p-valHighlight" id="disp-integrity">100 %</div>
                             <div class="p-bar"><div class="p-fill integrity-fill" id="bar-integrity" style="width: 100%;"></div></div>
                         </div>
@@ -228,7 +228,7 @@
 
                     <!-- Live Mini Osc Canvas -->
                     <div class="osc-container">
-                        <div class="osc-title">OSCILLOSCOPE WAVEFORM</div>
+                        <div class="osc-title">OSCILLOSCOPE HARMONICS</div>
                         <canvas id="osc-canvas" width="240" height="80"></canvas>
                     </div>
                 </aside>
@@ -236,59 +236,67 @@
                 <!-- CENTER VIRTUAL GUITAR STAGE WITH REALISTIC GUITAR ASSET -->
                 <div class="guitar-stage glass-panel" id="guitar-stage">
                     <div class="stage-watermark" id="stage-watermark">STRATOS A-01</div>
-                    <div class="pookie-sparkles-layer" id="sparkles-layer"></div>
+                    <div class="stage-spotlight-layer" id="spotlight-layer"></div>
 
                     <!-- REALISTIC GUITAR CONTAINER WITH INTERACTIVE STRING OVERLAYS -->
                     <div class="guitar-container" id="guitar-container">
                         <!-- REALISTIC FRONT-FACING GUITAR ASSET -->
-                        <img src="assets/images/guitar.png" alt="STRATOS Realistic Acoustic Guitar" class="guitar-img-asset" id="guitar-img-asset" onerror="console.warn('Local guitar asset missing fallback engaged');">
+                        <img src="assets/images/guitar.png" alt="STRATOS Realistic Acoustic Guitar" class="guitar-img-asset" id="guitar-img-asset">
                         
-                        <!-- INTERACTIVE SIX STRING SVG OVERLAY PERFECTLY ALIGNED OVER REAL GUITAR -->
-                        <svg class="guitar-svg-overlay" viewBox="0 0 400 920" xmlns="http://www.w3.org/2000/svg">
+                        <!-- INTERACTIVE SIX STRING SVG OVERLAY EXACTLY CALIBRATED TO 896x1200 GUITAR GEOMETRY -->
+                        <svg class="guitar-svg-overlay" viewBox="0 0 896 1200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                             <defs>
-                                <linearGradient id="stringGoldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <linearGradient id="stringWarmGrad" x1="0%" y1="0%" x2="0%" y2="100%">
                                     <stop offset="0%" stop-color="#ffffff"/>
-                                    <stop offset="50%" stop-color="#f3e5ab"/>
-                                    <stop offset="100%" stop-color="#d4af37"/>
+                                    <stop offset="40%" stop-color="#faeccb"/>
+                                    <stop offset="85%" stop-color="#d4af37"/>
+                                    <stop offset="100%" stop-color="#997722"/>
                                 </linearGradient>
+                                <filter id="stringGlow" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="2" result="blur" />
+                                    <feMerge>
+                                        <feMergeNode in="blur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
                             </defs>
 
                             <!-- SIX INTERACTIVE STRINGS GROUP -->
                             <g id="strings-group">
-                                <!-- String 6: Low E (Thickest Bronze) -->
-                                <g class="string-wrapper" data-string="6" id="string-wrap-6">
-                                    <line x1="172" y1="50" x2="158" y2="705" stroke="transparent" stroke-width="24" class="string-hitbox"/>
-                                    <line x1="172" y1="50" x2="158" y2="705" stroke="url(#stringGoldGrad)" stroke-width="4.5" class="string-line" id="string-line-6"/>
+                                <!-- String 6: Low E (Thickest Bronze, Gauge 0.053) -->
+                                <g class="string-wrapper" data-string="6" id="string-wrap-6" role="button" aria-label="String 6: Low E">
+                                    <line x1="426" y1="206" x2="420" y2="765" stroke="rgba(255,255,255,0.001)" stroke-width="18" class="string-hitbox"/>
+                                    <line x1="426" y1="206" x2="420" y2="765" stroke="url(#stringWarmGrad)" stroke-width="5.0" class="string-line" id="string-line-6"/>
                                 </g>
 
-                                <!-- String 5: A -->
-                                <g class="string-wrapper" data-string="5" id="string-wrap-5">
-                                    <line x1="183" y1="50" x2="175" y2="705" stroke="transparent" stroke-width="24" class="string-hitbox"/>
-                                    <line x1="183" y1="50" x2="175" y2="705" stroke="url(#stringGoldGrad)" stroke-width="3.8" class="string-line" id="string-line-5"/>
+                                <!-- String 5: A (Gauge 0.042) -->
+                                <g class="string-wrapper" data-string="5" id="string-wrap-5" role="button" aria-label="String 5: A">
+                                    <line x1="435" y1="206" x2="432" y2="765" stroke="rgba(255,255,255,0.001)" stroke-width="18" class="string-hitbox"/>
+                                    <line x1="435" y1="206" x2="432" y2="765" stroke="url(#stringWarmGrad)" stroke-width="4.2" class="string-line" id="string-line-5"/>
                                 </g>
 
-                                <!-- String 4: D -->
-                                <g class="string-wrapper" data-string="4" id="string-wrap-4">
-                                    <line x1="194" y1="50" x2="191" y2="705" stroke="transparent" stroke-width="24" class="string-hitbox"/>
-                                    <line x1="194" y1="50" x2="191" y2="705" stroke="url(#stringGoldGrad)" stroke-width="3.0" class="string-line" id="string-line-4"/>
+                                <!-- String 4: D (Gauge 0.032) -->
+                                <g class="string-wrapper" data-string="4" id="string-wrap-4" role="button" aria-label="String 4: D">
+                                    <line x1="444" y1="206" x2="444" y2="765" stroke="rgba(255,255,255,0.001)" stroke-width="18" class="string-hitbox"/>
+                                    <line x1="444" y1="206" x2="444" y2="765" stroke="url(#stringWarmGrad)" stroke-width="3.4" class="string-line" id="string-line-4"/>
                                 </g>
 
-                                <!-- String 3: G -->
-                                <g class="string-wrapper" data-string="3" id="string-wrap-3">
-                                    <line x1="206" y1="50" x2="208" y2="705" stroke="transparent" stroke-width="24" class="string-hitbox"/>
-                                    <line x1="206" y1="50" x2="208" y2="705" stroke="url(#stringGoldGrad)" stroke-width="2.4" class="string-line" id="string-line-3"/>
+                                <!-- String 3: G (Gauge 0.024) -->
+                                <g class="string-wrapper" data-string="3" id="string-wrap-3" role="button" aria-label="String 3: G">
+                                    <line x1="453" y1="206" x2="456" y2="765" stroke="rgba(255,255,255,0.001)" stroke-width="18" class="string-hitbox"/>
+                                    <line x1="453" y1="206" x2="456" y2="765" stroke="url(#stringWarmGrad)" stroke-width="2.6" class="string-line" id="string-line-3"/>
                                 </g>
 
-                                <!-- String 2: B -->
-                                <g class="string-wrapper" data-string="2" id="string-wrap-2">
-                                    <line x1="217" y1="50" x2="224" y2="705" stroke="transparent" stroke-width="24" class="string-hitbox"/>
-                                    <line x1="217" y1="50" x2="224" y2="705" stroke="url(#stringGoldGrad)" stroke-width="1.8" class="string-line" id="string-line-2"/>
+                                <!-- String 2: B (Gauge 0.016) -->
+                                <g class="string-wrapper" data-string="2" id="string-wrap-2" role="button" aria-label="String 2: B">
+                                    <line x1="462" y1="206" x2="468" y2="765" stroke="rgba(255,255,255,0.001)" stroke-width="18" class="string-hitbox"/>
+                                    <line x1="462" y1="206" x2="468" y2="765" stroke="url(#stringWarmGrad)" stroke-width="2.0" class="string-line" id="string-line-2"/>
                                 </g>
 
-                                <!-- String 1: High E (Thinnest) -->
-                                <g class="string-wrapper" data-string="1" id="string-wrap-1">
-                                    <line x1="228" y1="50" x2="241" y2="705" stroke="transparent" stroke-width="24" class="string-hitbox"/>
-                                    <line x1="228" y1="50" x2="241" y2="705" stroke="url(#stringGoldGrad)" stroke-width="1.2" class="string-line" id="string-line-1"/>
+                                <!-- String 1: High E (Thinnest, Gauge 0.012) -->
+                                <g class="string-wrapper" data-string="1" id="string-wrap-1" role="button" aria-label="String 1: High E">
+                                    <line x1="471" y1="206" x2="480" y2="765" stroke="rgba(255,255,255,0.001)" stroke-width="18" class="string-hitbox"/>
+                                    <line x1="471" y1="206" x2="480" y2="765" stroke="url(#stringWarmGrad)" stroke-width="1.5" class="string-line" id="string-line-1"/>
                                 </g>
                             </g>
                         </svg>
@@ -296,7 +304,7 @@
                         <!-- Instruction Overlay before first click -->
                         <div class="guitar-hint" id="guitar-hint">
                             <span class="pulse-ring"></span>
-                            <span>PLUCK ANY STRING TO CALIBRATE</span>
+                            <span>PLUCK ANY STRING TO CALIBRATE RESONANCE</span>
                         </div>
                     </div>
                 </div>
@@ -305,7 +313,7 @@
                 <aside class="dashboard-panel panel-right glass-panel" id="panel-right">
                     <div class="panel-header">
                         <span class="panel-title">SESSION LOG</span>
-                        <span class="mono-badge">LIVE</span>
+                        <span class="mono-badge">MONITORING</span>
                     </div>
 
                     <div class="session-info-box">
@@ -315,7 +323,7 @@
                         </div>
                         <div class="s-row">
                             <span>ACTIVE STRINGS:</span>
-                            <span class="mono-val highlight-cyan" id="session-strings-count">6 / 6</span>
+                            <span class="mono-val highlight-amber" id="session-strings-count">6 / 6</span>
                         </div>
                         <div class="s-row">
                             <span>SYSTEM MODE:</span>
@@ -326,36 +334,36 @@
                     <div class="strings-status-list" id="strings-status-list">
                         <div class="string-status-item" id="status-item-6">
                             <span>E2 (Low E)</span>
-                            <span class="st-badge active">ACTIVE</span>
+                            <span class="st-badge active">ONLINE</span>
                         </div>
                         <div class="string-status-item" id="status-item-5">
                             <span>A2</span>
-                            <span class="st-badge active">ACTIVE</span>
+                            <span class="st-badge active">ONLINE</span>
                         </div>
                         <div class="string-status-item" id="status-item-4">
                             <span>D3</span>
-                            <span class="st-badge active">ACTIVE</span>
+                            <span class="st-badge active">ONLINE</span>
                         </div>
                         <div class="string-status-item" id="status-item-3">
                             <span>G3</span>
-                            <span class="st-badge active">ACTIVE</span>
+                            <span class="st-badge active">ONLINE</span>
                         </div>
                         <div class="string-status-item" id="status-item-2">
                             <span>B3</span>
-                            <span class="st-badge active">ACTIVE</span>
+                            <span class="st-badge active">ONLINE</span>
                         </div>
                         <div class="string-status-item" id="status-item-1">
                             <span>E4 (High E)</span>
-                            <span class="st-badge active">ACTIVE</span>
+                            <span class="st-badge active">ONLINE</span>
                         </div>
                     </div>
 
                     <!-- System Log Terminal -->
                     <div class="terminal-box">
-                        <div class="terminal-header">DIAGNOSTIC LOG</div>
+                        <div class="terminal-header">DIAGNOSTIC TELEMETRY LOG</div>
                         <div class="terminal-body" id="terminal-log">
-                            <div class="log-entry">[SYS_INIT] STRATOS Acoustic Core ready.</div>
-                            <div class="log-entry">[SYS_INIT] Transducer array online.</div>
+                            <div class="log-entry">[SYS_INIT] STRATOS Precision Acoustic Core v4.8.2 online.</div>
+                            <div class="log-entry">[SYS_INIT] Transducer matrix calibrated. Zero stress logged.</div>
                         </div>
                     </div>
                 </aside>
@@ -363,31 +371,53 @@
         </section>
     </main>
 
-    <!-- POOKIE / UNCLE FINAL MODAL POPUP -->
+    <!-- FINAL ARCHITECT JUMPSCARE MODAL POPUP -->
     <div class="modal-overlay hidden" id="final-modal">
-        <div class="modal-card glass-panel pookie-modal">
+        <div class="modal-card glass-panel jumpscare-modal" id="jumpscare-modal-card">
+            <!-- Modal Header / Emergency Override Bar -->
             <div class="modal-header">
-                <div class="pookie-badge">💖 SPECIAL SYSTEM ANNOUNCEMENT 💖</div>
-                <button class="modal-close" id="modal-close-btn">&times;</button>
+                <div class="debrief-badge">
+                    <span class="debrief-pulse"></span>
+                    <span>CRITICAL OVERRIDE // UNAUTHORIZED TRANSMISSION</span>
+                </div>
+                <button class="modal-close" id="modal-close-btn" aria-label="Close modal">&times;</button>
             </div>
 
-            <div class="modal-body">
-                <!-- Prominent Uncle Image Display -->
-                <div class="uncle-image-wrapper">
-                    <img src="assets/images/final-uncle.png" alt="Stratos Uncle Mastermind" id="final-uncle-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'300\' viewBox=\'0 0 300 300\'><rect width=\'300\' height=\'300\' fill=\'%232a1b3d\'/><text x=\'50%\' y=\'45%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%23ff77a9\' font-family=\'sans-serif\' font-size=\'40\'>🧔‍♂️✨</text><text x=\'50%\' y=\ me=\'middle\' text-anchor=\'middle\' fill=\'%23ffffff\' font-family=\'sans-serif\' font-size=\'16\'>UNCLE IMAGE HERE</text></svg>';">
-                    <div class="pookie-crown">👑</div>
+            <!-- UPPER JUMPSCARE SECTION: 50/50 SPLIT (Large Rectangular Photo + Serious Dialogue) -->
+            <div class="jumpscare-hero-section">
+                <!-- Large, Non-Circular, Cinematic Rectangular Portrait -->
+                <div class="uncle-portrait-container">
+                    <img src="assets/images/uncle.jpeg" alt="Chief Acoustic Architect" class="uncle-jumpscare-img" id="final-uncle-img">
+                    <div class="portrait-scanline"></div>
+                    <div class="portrait-tag">ARCHITECT_ID: #00-IYA-MASTERMIND</div>
                 </div>
 
-                <!-- Dialogue Speech Bubble -->
-                <div class="dialogue-speech-bubble">
-                    <div class="bubble-arrow"></div>
-                    <p class="dialogue-text" id="final-dialogue-text">"Initializing..."</p>
+                <!-- Absurdly Serious System Dialogue Pane -->
+                <div class="jumpscare-dialogue-pane">
+                    <div class="transmission-meta">
+                        <div class="meta-row"><span class="lbl">ORIGIN:</span> <span class="val">CHIEF ACOUSTIC ARCHITECT</span></div>
+                        <div class="meta-row"><span class="lbl">STATUS:</span> <span class="val alert-red">CORE MATRIX ANNIHILATED</span></div>
+                        <div class="meta-row"><span class="lbl">VECTORS REMAINING:</span> <span class="val alert-red">00 / 06</span></div>
+                    </div>
+
+                    <div class="dialogue-speech-bubble">
+                        <div class="bubble-speaker">INCOMING TRANSMISSION:</div>
+                        <p class="dialogue-text" id="final-dialogue-text">"Initializing..."</p>
+                    </div>
+
+                    <div class="transmission-footnote">
+                        <div class="footnote-warning">SABOTAGE PROTOCOL COMPLETE</div>
+                        <button class="scroll-hint-pill" id="scroll-to-report-btn" type="button">
+                            <span>SCROLL FOR INCIDENT REPORT</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <!-- FINAL PERFORMANCE REPORT SECTION -->
-            <div class="report-section glass-panel hidden" id="final-report">
-                <h3 class="report-title">📊 STRATOS PERFORMANCE REPORT</h3>
+            <!-- LOWER POST-MORTEM SECTION: REACHED BY SCROLLING DOWN -->
+            <div class="report-section glass-panel" id="final-report">
+                <h3 class="report-title">STRATOS ACOUSTIC INCIDENT POST-MORTEM</h3>
                 <div class="report-grid">
                     <div class="r-item"><span class="r-label">STRINGS STARTED:</span> <span class="r-val">06</span></div>
                     <div class="r-item"><span class="r-label">STRINGS SURVIVED:</span> <span class="r-val alert-red">00</span></div>
@@ -396,24 +426,24 @@
                     <div class="r-item"><span class="r-label">ACTUAL USEFULNESS:</span> <span class="r-val alert-red">0%</span></div>
                     <div class="r-item"><span class="r-label">SYSTEM STABILITY:</span> <span class="r-val alert-red">QUESTIONABLE</span></div>
                 </div>
-                <div class="report-footer">PERFORMANCE COMPLETE</div>
-            </div>
+                <div class="report-footer">DIAGNOSTIC ARCHIVE SEALED // TERMINAL FAILURE LOGGED</div>
 
-            <!-- Modal Action Buttons -->
-            <div class="modal-actions">
-                <button class="btn btn-secondary" id="btn-restore">RESTORE GUITAR</button>
-                <button class="btn btn-primary" id="btn-reset">RESTART SYSTEM</button>
-            </div>
-            <div class="restore-error-msg hidden" id="restore-error">
-                ❌ Restoration requires 6 strings.<br>
-                <strong>ERROR 404: STRING NOT FOUND.</strong>
+                <!-- Modal Action Buttons inside the report area -->
+                <div class="modal-actions">
+                    <button class="btn btn-secondary" id="btn-restore">RESTORE GUITAR</button>
+                    <button class="btn btn-primary" id="btn-reset">RESTART SYSTEM</button>
+                </div>
+                <div class="restore-error-msg hidden" id="restore-error">
+                    ❌ Restoration requires 6 strings.<br>
+                    <strong>ERROR 404: STRING NOT FOUND.</strong>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Hidden audio element fallback loader -->
-    <audio id="dialogue-audio-player" style="display:none;"></audio>
-    <audio id="snap-audio-player" style="display:none;"></audio>
+    <!-- Hidden audio element loader -->
+    <audio id="dialogue-audio-player" style="display:none;" preload="none"></audio>
+    <audio id="snap-audio-player" style="display:none;" preload="none"></audio>
 
     <script src="script.js"></script>
 </body>
