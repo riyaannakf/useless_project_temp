@@ -4,13 +4,12 @@
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: Iyaaa
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Team Lead: Diya Anish - SNGCE
+- Member 2: Riya Anna KF - SNGCE
 
 ### Project Description
 STRATOS appears to be an ultra-sophisticated acoustic intelligence engine with real-time spectrum tracking and quantum telemetry for performance monitoring. However, as users interact with the interactive acoustic strings, the strings progressively snap, spiraling the system into hilarious panic states until only one string is left.
@@ -96,9 +95,8 @@ For Hardware:
 [Add any extra demo materials/links]
 
 ## Team Contributions
-- [Name 1]: Project architecture, HTML/CSS design, and UI styling
-- [Name 2]: Web Audio API synthesis engine and canvas visualizer logic
-- [Name 3]: System state machine, terminal logging, and asset integration
+- Diya Anish: Project architecture, HTML/CSS design, and UI styling
+- Riya Anna KF: Web Audio API synthesis engine, canvas visualizer logic, and system state machine
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
