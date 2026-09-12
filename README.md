@@ -62,14 +62,14 @@ Open `index.html` directly in your browser or run a local static server (e.g. VS
 For Software:
 
 # Screenshots
-![STRATOS Dashboard](stratos/assets/images/guitar.png)
-*STRATOS Dashboard showing acoustic resonance spectrum, telemetry, and interactive guitar workstation*
+![Landing Page](stratos/assets/Screenshot_12-9-2026_74328_riyaannakf.github.io.jpeg)
+* Premium acoustic-intelligence interface introducing STRATOS and its advanced performance-monitoring system.*
 
-![Acoustic Workstation](stratos/assets/images/guitar.png)
-*Interactive guitar string matrix with real-time waveform oscilloscope and telemetry readouts*
+![Guitar Interface](stratos/assets/Screenshot_12-9-2026_74348_riyaannakf.github.io.jpeg)
+*Interactive virtual guitar with real-time acoustic telemetry and individual string monitoring.*
 
-![System Warning State](stratos/assets/images/guitar.png)
-*Dynamic system status updates degrading from Optimal to Panic Mode as strings snap*
+![Final Reveal](stratos/assets/Screenshot_12-9-2026_74445_riyaannakf.github.io.jpeg)
+*Dramatic “acoustic incident” reveal featuring the movie image and the absurd final directive.*
 
 # Diagrams
 ```
@@ -120,8 +120,8 @@ For Hardware:
 
 ### Project Demo
 # Video
-[Add your demo video link here]
-*Demonstration of STRATOS acoustic visualizers and interactive string snap progression*
+https://youtu.be/96H2bmfbzyE
+*Demonstration of STRATOS acoustic Guitar visualizers and interactive string snap progression with a twist of movie meme.*
 
 # Additional Demos
 [Add any extra demo materials/links]
