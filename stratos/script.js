@@ -9,7 +9,7 @@
 const CONFIG = {
     stringCount: 6,
     breakInterval: 7000, // Exactly 7 seconds (7000ms) after the first pluck
-    finalDialogue: "I engineered a multi-tier acoustic intelligence matrix with zero-latency resonance tracking... solely to observe you pluck strings until zero vectors remain. Statistically, you were warned.",
+    finalDialogue: "ആത്മാർത്ഥതയോടെ പഠിച്ചാൽ ഒറ്റ കമ്പി തന്നെ ധാരാളം",
     finalImage: "assets/images/uncle.jpeg",
     finalAudio: "assets/audio/final.mpeg",
     snapAudio: "assets/audio/string-snap.mp3",
@@ -47,45 +47,122 @@ const STRING_X_COORDS = [
 const WARNING_MESSAGES = {
     6: {
         title: "SYSTEM STATUS: OPTIMAL",
-        sub: "All 6 acoustic string vectors reporting 100% integrity.",
-        log: "All acoustic transducers responding within 0.002ms.",
+        sub: "All 06 acoustic vectors reporting 100% nominal structural integrity.",
+        subList: [
+            "All 06 acoustic vectors reporting 100% nominal structural integrity.",
+            "Acoustic integrity: 100.0%. Structural analysis: Nominal."
+        ],
+        log: "[SYS_INIT] All 06 acoustic transducers responding within 0.002ms nominal tolerance.",
         mode: "PRECISION ANALYSIS",
-        meta: "CONTINUOUS ANALYSIS"
+        meta: "STRUCTURAL ANALYSIS: NOMINAL",
+        icon: "⚙️",
+        predictiveVal: "NOMINAL",
+        predictiveSub: "Zero divergence logged across soundboard matrix",
+        resPct: "99.4 %",
+        resBar: "99%"
     },
     5: {
-        title: "STATUS: MINOR ANOMALY NOTED",
-        sub: "Single vector loss logged. Recalibrating resonance curve.",
-        log: "[WARN] Vector loss registered. Acoustic matrix compensated to 5 strings.",
+        title: "SYSTEM STATUS: MINOR ANOMALY DETECTED",
+        sub: "One acoustic vector has been lost. Structural deviation within tolerance. Continuing analysis.",
+        subList: [
+            "One acoustic vector has been lost. Structural deviation within tolerance. Continuing analysis.",
+            "Acoustic integrity: 83.3%. Structural deviation: Within tolerance."
+        ],
+        log: "[WARN] Single vector anomaly registered. Acoustic integrity: 83.3%. Continuing analysis.",
         mode: "CONTINUOUS ANALYSIS",
-        meta: "REDUCED ARRAY"
+        meta: "STRUCTURAL DEVIATION: WITHIN TOLERANCE",
+        icon: "⚙️",
+        predictiveVal: "TOLERABLE",
+        predictiveSub: "Single vector loss within mathematical tolerance",
+        resPct: "83.3 %",
+        resBar: "83%"
     },
     4: {
-        title: "STATUS: STRUCTURAL STRESS DETECTED",
-        sub: "Acoustic tension loss noted. Structural integrity degrading.",
-        log: "[ALERT] Transducer stress threshold exceeded on primary soundboard.",
+        title: "SYSTEM STATUS: STRUCTURAL INTEGRITY DEGRADING",
+        sub: "Acoustic vectors remaining: 04 / 06. Structural confidence remains acceptable. (Define acceptable.)",
+        subList: [
+            "Acoustic vectors remaining: 04 / 06. Structural confidence remains acceptable. (Define acceptable.)",
+            "Predictive model: Concerned. Damping thresholds approaching upper boundary.",
+            "Structural confidence remains acceptable. The definition of acceptable is under review."
+        ],
+        log: "[ALERT] Structural integrity degrading. Acoustic vectors: 04 / 06. Predictive model: Concerned.",
         mode: "STRESS MONITORING",
-        meta: "STRUCTURAL COMPLIANCE"
+        meta: "PREDICTIVE MODEL: CONCERNED",
+        icon: "⚠️",
+        predictiveVal: "CONCERNED",
+        predictiveSub: "Structural confidence remains acceptable (define acceptable)",
+        resPct: "66.7 %",
+        resBar: "67%"
     },
     3: {
         title: "SYSTEM STATUS: STRUCTURAL CONCERN",
         sub: "Three acoustic vectors remain. Acceptable parameters are becoming increasingly theoretical.",
-        log: "[WARN] Acoustic confidence: 61.4%. Situation within theoretical tolerances.",
+        subList: [
+            "Three acoustic vectors remain. Acceptable parameters are becoming increasingly theoretical.",
+            "System status: Still functional. Probably.",
+            "Three vectors remain. This is still within specification. (The specification is being reviewed).",
+            "Damage assessment: Ongoing. User behaviour: Questionable."
+        ],
+        log: "[WARN] Acoustic confidence: 61%. Specification is being reviewed. User behaviour: Questionable.",
         mode: "DAMAGE ASSESSMENT",
-        meta: "DAMAGE ASSESSMENT"
+        meta: "USER BEHAVIOUR: QUESTIONABLE",
+        icon: "⚠️",
+        predictiveVal: "THEORETICAL",
+        predictiveSub: "Acceptable parameters are becoming increasingly theoretical",
+        resPct: "61.0 %",
+        resBar: "61%"
     },
     2: {
-        title: "SYSTEM STATUS: HIGHLY CONCERNING",
-        sub: "TWO STRINGS REMAINING. This situation is becoming difficult to justify to acoustic engineering standards.",
-        log: "[CRITICAL] Predictive Analysis: We predicted this would happen. Why are you continuing?",
+        title: "SYSTEM STATUS: UNEXPECTED // PLEASE EXPLAIN",
+        sub: "Remaining string vectors: 02. Situation becoming difficult to justify.",
+        subList: [
+            "Remaining string vectors: 02. Situation becoming difficult to justify.",
+            "Predictive Analysis: We predicted this. Unfortunately.",
+            "[CRITICAL] Only two acoustic vectors remain. This was not the intended outcome.",
+            "Structural confidence: Low. User interaction: Still detected for some reason."
+        ],
+        log: "[CRITICAL] Only two vectors remain. Situation becoming difficult to justify. Predictive analysis: We predicted this. Unfortunately.",
         mode: "DAMAGE CONTROL",
-        meta: "DAMAGE CONTROL"
+        meta: "SITUATION: HARD TO JUSTIFY",
+        icon: "🚨",
+        predictiveVal: "UNFORTUNATE",
+        predictiveSub: "We predicted this would happen. Unfortunately.",
+        resPct: "33.3 %",
+        resBar: "33%"
     },
     1: {
-        title: "SYSTEM STATUS: THIS IS NOT IDEAL",
-        sub: "RECOMMENDED ACTION: STOP TOUCHING THE GUITAR. USER ACTION PROJECTION: LIKELY TO IGNORE RECOMMENDATION.",
-        log: "[FINAL] Zero redundancy remaining. System operating on pure hopes and prayers.",
+        title: "SYSTEM STATUS: THIS IS NOT IDEAL // TECHNICAL RESPONSE: ?????",
+        sub: "RECOMMENDED ACTION: STOP TOUCHING THE GUITAR. USER ACTION PROJECTION: Apparently you are going to touch it anyway.",
+        subList: [
+            "RECOMMENDED ACTION: STOP TOUCHING THE GUITAR. (Apparently you are going to touch it anyway).",
+            "Final acoustic vector detected. System confidence: 4%. User confidence: Unfortunately high.",
+            "[CRITICAL OVERRIDE] One string remains. Please consider your next decision carefully.",
+            "System stability: Questionable. System confidence: Questionable. Why are you still clicking?"
+        ],
+        log: "[CRITICAL OVERRIDE] Remaining string vectors: 01. Structural confidence: 4%. User confidence: Unfortunately high. Recommended action: Stop touching the guitar.",
         mode: "FINAL TETHER",
-        meta: "FINAL TETHER"
+        meta: "USER: LIKELY TO IGNORE WARNING",
+        icon: "🛑",
+        predictiveVal: "DO NOT TOUCH",
+        predictiveSub: "User confidence: Unfortunately high. Stop touching the guitar.",
+        resPct: "4.0 %",
+        resBar: "4%"
+    },
+    0: {
+        title: "SYSTEM STATUS: UNMITIGATED CATASTROPHE",
+        sub: "Zero structural vectors remaining. System offline. Chief Acoustic Architect taking over controls.",
+        subList: [
+            "Zero structural vectors remaining. What did we just tell you?",
+            "System offline. Chief Acoustic Architect taking over controls."
+        ],
+        log: "[TERMINAL] Final acoustic vector collapsed. Mastermind override initialized.",
+        mode: "TOTAL COLLAPSE",
+        meta: "CORE MATRIX DESTROYED",
+        icon: "💀",
+        predictiveVal: "TERMINATED",
+        predictiveSub: "Core matrix completely annihilated",
+        resPct: "0.0 %",
+        resBar: "0%"
     }
 };
 
@@ -151,8 +228,10 @@ const DOM = {
 let state = {
     activeStrings: [1, 2, 3, 4, 5, 6], // Active string indices (1 to 6)
     hasStartedTimer: false,
+    isEndingTriggered: false, // Prevents duplicate final jumpscare sequences
     breakTimer: null,
     sessionTimer: null,
+    warningCycleTimer: null, // Rotates alternative deadpan subtitles smoothly
     secondsElapsed: 0,
     audioCtx: null,
     audioBuffers: {}, // Cached local audio buffers if available
@@ -223,7 +302,17 @@ function initEventListeners() {
         wrapper.addEventListener('touchstart', handlePluck, { passive: false });
     });
 
-    // Modal Actions
+    // Modal Actions & Scroll Hint
+    const scrollBtn = document.getElementById('scroll-to-report-btn');
+    if (scrollBtn) {
+        scrollBtn.addEventListener('click', () => {
+            const report = document.getElementById('final-report');
+            if (report) {
+                report.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    }
+
     if (DOM.btnRestore) {
         DOM.btnRestore.addEventListener('click', () => {
             if (DOM.restoreError) DOM.restoreError.classList.remove('hidden');
@@ -436,59 +525,83 @@ function breakOneRandomString() {
 
     const remainingCount = state.activeStrings.length;
     DOM.sessionStringsCount.textContent = `${remainingCount} / 6`;
-    const integrityPct = Math.round((remainingCount / 6) * 100);
-    DOM.dispIntegrity.textContent = `${integrityPct} %`;
-    DOM.barIntegrity.style.width = `${integrityPct}%`;
+    const integrityPct = (remainingCount / 6) * 100;
+    DOM.dispIntegrity.textContent = `${integrityPct.toFixed(1)} %`;
+    DOM.barIntegrity.style.width = `${Math.round(integrityPct)}%`;
+
+    // Immediately halt automatic timer when exactly 1 string remains
+    if (remainingCount === 1 && state.breakTimer) {
+        clearInterval(state.breakTimer);
+        state.breakTimer = null;
+        logTerminal("[CRITICAL] Single vector remains. Automatic breaking halted. Manual trigger awaiting.");
+    }
 
     updateSystemWarningState(remainingCount);
 }
 
 /* --------------------------------------------------------------------------
-   8. DEADPAN MEME FAILURE PROGRESSION (NO POOKIE / NO EMOJI SPAM)
+   8. DEADPAN TECHNICAL MEME PROGRESSION (SYSTEMATIC HARDWARE COLLAPSE)
    -------------------------------------------------------------------------- */
 function updateSystemWarningState(count) {
     const msg = WARNING_MESSAGES[count] || WARNING_MESSAGES[6];
     
-    DOM.statusTitleText.textContent = msg.title;
-    DOM.statusSubText.textContent = msg.sub;
-    DOM.sessionMode.textContent = msg.mode;
-    if (DOM.metaModeText) DOM.metaModeText.textContent = msg.meta;
+    // Clear any active subtitle rotation timer
+    if (state.warningCycleTimer) {
+        clearInterval(state.warningCycleTimer);
+        state.warningCycleTimer = null;
+    }
+
+    // Update Header Status Banner Elements
+    if (DOM.statusTitleText) DOM.statusTitleText.textContent = msg.title;
+    if (DOM.statusSubText) {
+        DOM.statusSubText.style.opacity = '1';
+        DOM.statusSubText.textContent = msg.sub;
+    }
+    if (DOM.sessionMode) DOM.sessionMode.textContent = msg.mode;
+    if (DOM.metaModeText && msg.meta) DOM.metaModeText.textContent = msg.meta;
+    if (DOM.statusIcon && msg.icon) DOM.statusIcon.textContent = msg.icon;
+
+    // Update Predictive Telemetry
+    if (DOM.predictiveVal && msg.predictiveVal) DOM.predictiveVal.textContent = msg.predictiveVal;
+    if (DOM.predictiveSub && msg.predictiveSub) DOM.predictiveSub.textContent = msg.predictiveSub;
+
+    // Update Resonance Telemetry
+    if (DOM.dispRes && msg.resPct) DOM.dispRes.textContent = msg.resPct;
+    const barRes = document.getElementById('bar-res');
+    if (barRes && msg.resBar) barRes.style.width = msg.resBar;
+
     logTerminal(msg.log);
 
-    // Clean any prior failure classes
-    document.body.classList.remove('state-3-strings', 'state-2-strings', 'state-1-strings');
-
-    // 3 STRINGS — SUBTLE SIGNS OF TROUBLE
-    if (count === 3) {
-        document.body.classList.add('state-3-strings');
-        DOM.statusIcon.textContent = '⚠️';
-        if (DOM.predictiveVal) DOM.predictiveVal.textContent = 'QUESTIONABLE';
-        if (DOM.predictiveSub) DOM.predictiveSub.textContent = 'Acceptable tolerances becoming theoretical';
-    }
-    
-    // 2 STRINGS — SYSTEM IS CLEARLY LOSING IT
-    if (count === 2) {
-        document.body.classList.add('state-2-strings');
-        DOM.statusIcon.textContent = '🚨';
-        if (DOM.predictiveVal) DOM.predictiveVal.textContent = 'PREDICTED';
-        if (DOM.predictiveSub) DOM.predictiveSub.textContent = 'Acoustic engineer consensus: Not great';
+    // Clean prior failure classes
+    document.body.classList.remove('state-5-strings', 'state-4-strings', 'state-3-strings', 'state-2-strings', 'state-1-strings');
+    if (count >= 1 && count <= 5) {
+        document.body.classList.add(`state-${count}-strings`);
     }
 
-    // 1 STRING REMAINING — MAXIMUM CONTROLLED MEME CHAOS
+    // 1 STRING REMAINING — Final String Glow & Spotlight
     if (count === 1) {
-        document.body.classList.add('state-1-strings');
-        DOM.statusIcon.textContent = '🛑';
-        if (DOM.predictiveVal) DOM.predictiveVal.textContent = 'HELP';
-        if (DOM.predictiveSub) DOM.predictiveSub.textContent = 'Operating on pure hopes and prayers';
-        
         const finalStringNum = state.activeStrings[0];
         const stringLine = document.getElementById(`string-line-${finalStringNum}`);
         if (stringLine) {
             stringLine.style.stroke = '#ffaa33';
             stringLine.style.filter = 'drop-shadow(0 0 16px #ff7722) drop-shadow(0 0 6px #ffffff)';
         }
-
         spawnSpotlightAroundString(finalStringNum);
+    }
+
+    // Dynamic cycling through alternating dry deadpan quotes for phases with multiple lines
+    if (msg.subList && msg.subList.length > 1) {
+        let cycleIdx = 0;
+        state.warningCycleTimer = setInterval(() => {
+            cycleIdx = (cycleIdx + 1) % msg.subList.length;
+            if (DOM.statusSubText) {
+                DOM.statusSubText.style.opacity = '0';
+                setTimeout(() => {
+                    DOM.statusSubText.textContent = msg.subList[cycleIdx];
+                    DOM.statusSubText.style.opacity = '1';
+                }, 220);
+            }
+        }, 3800);
     }
 }
 
@@ -511,30 +624,51 @@ function spawnSpotlightAroundString(stringNum) {
    9. FINAL STRING INTERACTION → REVEAL ARCHITECT POPUP
    -------------------------------------------------------------------------- */
 function triggerFinalStringEnding(finalStringNum) {
-    // 1. Play final note
+    if (state.isEndingTriggered) return;
+    state.isEndingTriggered = true;
+
+    // Halt any remaining timers
+    if (state.breakTimer) { clearInterval(state.breakTimer); state.breakTimer = null; }
+    if (state.sessionTimer) { clearInterval(state.sessionTimer); state.sessionTimer = null; }
+    if (state.warningCycleTimer) { clearInterval(state.warningCycleTimer); state.warningCycleTimer = null; }
+
+    // 1. Play final note & snap sound
     playStringSound(finalStringNum);
+    playSnapSound();
     
     // 2. Animate final dramatic snap
     const finalWrap = document.getElementById(`string-wrap-${finalStringNum}`);
     if (finalWrap) {
         finalWrap.classList.add('string-snapped');
     }
+
+    const statusItem = document.getElementById(`status-item-${finalStringNum}`);
+    if (statusItem) {
+        statusItem.classList.add('broken');
+        const badge = statusItem.querySelector('.st-badge');
+        if (badge) {
+            badge.textContent = 'SNAPPED';
+            badge.className = 'st-badge snapped';
+        }
+    }
     
     state.activeStrings = [];
     DOM.sessionStringsCount.textContent = `0 / 6`;
-    DOM.dispIntegrity.textContent = `0 %`;
+    DOM.dispIntegrity.textContent = `0.0 %`;
     DOM.barIntegrity.style.width = `0%`;
-    DOM.statusTitleText.textContent = "SYSTEM STATUS: UNMITIGATED CATASTROPHE";
-    DOM.statusSubText.textContent = "Zero structural vectors remaining. System offline.";
-    DOM.statusIcon.textContent = '💀';
+
+    updateSystemWarningState(0);
 
     logTerminal("[CRITICAL] Final string snapped. Core structural matrix collapsed.");
     logTerminal("[STATUS] System has run out of strings. Terminating tracking cycle.");
 
-    // 3. Cinematic pause, then reveal Mastermind Uncle Popup
+    // 3. Cinematic jumpscare pause: screen freezes/darkens, then modal slams in
+    document.body.classList.add('critical-screen-freeze');
+
     setTimeout(() => {
+        document.body.classList.remove('critical-screen-freeze');
         openFinalUnclePopupTogether();
-    }, 1000);
+    }, 850);
 }
 
 function openFinalUnclePopupTogether() {
@@ -544,9 +678,19 @@ function openFinalUnclePopupTogether() {
     // Reveal Popup Modal
     if (DOM.finalModal) DOM.finalModal.classList.remove('hidden');
 
+    // Trigger sudden jumpscare impact animation
+    const modalCard = document.getElementById('jumpscare-modal-card');
+    if (modalCard) {
+        modalCard.classList.remove('jumpscare-impact-anim');
+        void modalCard.offsetWidth; // Force reflow
+        modalCard.classList.add('jumpscare-impact-anim');
+        modalCard.scrollTop = 0;
+    }
+
     // Trigger dialogue audio gracefully at moment of reveal
     const dialogueAudio = document.getElementById('dialogue-audio-player');
     if (dialogueAudio) {
+        dialogueAudio.currentTime = 0;
         dialogueAudio.src = CONFIG.finalAudio;
         dialogueAudio.play().then(() => {
             console.log(`[AUDIO] Successfully playing final audio: ${CONFIG.finalAudio}`);
@@ -556,10 +700,8 @@ function openFinalUnclePopupTogether() {
         });
     }
 
-    // Reveal Performance Report shortly after
-    setTimeout(() => {
-        if (DOM.finalReport) DOM.finalReport.classList.remove('hidden');
-    }, 1100);
+    // Ensure final incident report is visible within the scrollable modal
+    if (DOM.finalReport) DOM.finalReport.classList.remove('hidden');
 }
 
 // Graceful fallback avatar for final architect image
@@ -581,16 +723,26 @@ function resetSystem() {
     // 1. Clear timers
     if (state.breakTimer) clearInterval(state.breakTimer);
     if (state.sessionTimer) clearInterval(state.sessionTimer);
+    if (state.warningCycleTimer) clearInterval(state.warningCycleTimer);
     state.breakTimer = null;
     state.sessionTimer = null;
+    state.warningCycleTimer = null;
     state.secondsElapsed = 0;
     state.hasStartedTimer = false;
+    state.isEndingTriggered = false;
     state.activeStrings = [1, 2, 3, 4, 5, 6];
+
+    // Reset audio if playing
+    const dialogueAudio = document.getElementById('dialogue-audio-player');
+    if (dialogueAudio) {
+        dialogueAudio.pause();
+        dialogueAudio.currentTime = 0;
+    }
 
     // 2. Reset UI elements
     DOM.sessionTime.textContent = "00:00";
     DOM.sessionStringsCount.textContent = "6 / 6";
-    DOM.dispIntegrity.textContent = "100 %";
+    DOM.dispIntegrity.textContent = "100.0 %";
     DOM.barIntegrity.style.width = "100%";
     if (DOM.guitarHint) DOM.guitarHint.classList.remove('hidden');
 
@@ -615,14 +767,15 @@ function resetSystem() {
         }
     });
 
-    // 5. Reset warning state and spotlight
-    document.body.classList.remove('state-3-strings', 'state-2-strings', 'state-1-strings');
+    // 5. Reset warning state, animations and spotlight
+    document.body.classList.remove('state-5-strings', 'state-4-strings', 'state-3-strings', 'state-2-strings', 'state-1-strings', 'critical-screen-freeze');
+    const modalCard = document.getElementById('jumpscare-modal-card');
+    if (modalCard) modalCard.classList.remove('jumpscare-impact-anim');
     if (DOM.spotlightLayer) DOM.spotlightLayer.innerHTML = '';
     updateSystemWarningState(6);
 
     // 6. Reset modals
     if (DOM.finalModal) DOM.finalModal.classList.add('hidden');
-    if (DOM.finalReport) DOM.finalReport.classList.add('hidden');
     if (DOM.restoreError) DOM.restoreError.classList.add('hidden');
 
     logTerminal("[SYS_RESET] System rebooted. Transducer matrix recalibrated to 6 strings.");

@@ -665,6 +665,7 @@ body {
 .status-subtitle {
     font-size: 0.85rem;
     color: var(--text-secondary);
+    transition: opacity 0.22s ease-in-out;
 }
 
 .status-meta-pill {
@@ -1045,9 +1046,25 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   10. DEADPAN MEME SYSTEM FAILURE PROGRESSION
-   (NO POOKIE / NO EMOJI SPAM / PURE DEADPAN ENGINEERING MELTDOWN)
+   10. DEADPAN TECHNICAL MEME SYSTEM FAILURE PROGRESSION
+   (PURE DEADPAN ENGINEERING MELTDOWN // ZERO CUTESY ELEMENTS)
    -------------------------------------------------------------------------- */
+
+/* 5 STRINGS REMAINING — FIRST RECORDED VECTOR FAILURE */
+body.state-5-strings .workstation-banner {
+    border-left-color: rgba(217, 125, 39, 0.7);
+}
+
+/* 4 STRINGS REMAINING — SUSPICIOUS ACOUSTIC DAMPING */
+body.state-4-strings .workstation-banner {
+    border-left-color: var(--status-warn);
+}
+body.state-4-strings #status-meta-pill {
+    border-color: rgba(245, 158, 11, 0.35);
+}
+body.state-4-strings #meta-mode-text {
+    color: var(--status-warn);
+}
 
 /* 3 STRINGS REMAINING — SUBTLE SIGNS OF UNRAVELING */
 body.state-3-strings .workstation-banner {
@@ -1418,6 +1435,16 @@ body.state-1-strings .guitar-stage {
     letter-spacing: 0.3px;
 }
 
+.malayalam-dialogue {
+    font-family: 'Noto Sans Malayalam', 'Manjari', 'Gayathri', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 1.65rem;
+    line-height: 1.55;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.2px;
+    text-shadow: 0 0 24px rgba(217, 125, 39, 0.45), 0 2px 4px rgba(0, 0, 0, 0.85);
+}
+
 .transmission-footnote {
     display: flex;
     justify-content: space-between;
@@ -1589,4 +1616,5 @@ body.critical-screen-freeze {
     .report-grid { grid-template-columns: 1fr; }
     .modal-actions { flex-direction: column; }
     .uncle-portrait-container { height: 320px; min-height: 260px; }
+    .malayalam-dialogue { font-size: 1.32rem; line-height: 1.5; }
 }
