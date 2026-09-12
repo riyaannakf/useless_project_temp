@@ -4,7 +4,7 @@
 
 
 ## Basic Details
-### Team Name: Iyaaa
+### Team Name: Iyaaaa
 
 
 ### Team Members
