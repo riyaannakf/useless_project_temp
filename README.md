@@ -12,32 +12,48 @@
 - Member 2: Riya Anna KF - SNGCE
 
 ### Project Description
-STRATOS appears to be an ultra-sophisticated acoustic intelligence engine with real-time spectrum tracking and quantum telemetry for performance monitoring. However, as users interact with the interactive acoustic strings, the strings progressively snap, spiraling the system into hilarious panic states until only one string is left.
+STRATOS is a fake, futuristic acoustic-analysis system where users “perform” on a virtual guitar while the system monitors their performance.
+As the strings progressively break, the professional interface descends into chaos, ending with a ridiculous cinematic reveal.
+
 
 ### The Problem (that doesn't exist)
-Guitarists and audio engineers needed a hyper-advanced acoustic performance monitoring platform with zero-latency neural resonance processing to track string integrity in real time.
+Guitars keep losing their strings, and nobody knows why.
+STRATOS solves this critical global crisis by using advanced acoustic intelligence to monitor guitar performance and scientifically analyze the inevitable destruction of every string. 
 
 ### The Solution (that nobody asked for)
-A sleek, glassmorphism-styled workstation dashboard that lures you in with complex telemetry, wave visualizers, and frequency metrics—only to snap its guitar strings every 7 seconds after you start plucking, turning a professional audio suite into an emotional single-string breakdown.
+STRATOS uses cutting-edge acoustic intelligence to monitor your guitar, analyze its performance, and detect string failure in real time.
+Our revolutionary solution? Let the user break every string themselves and then generate an extremely serious report about it. :)
 
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- **Languages:** HTML5, CSS3, JavaScript (ES6+)
-- **Frameworks/Libraries:** Web Audio API (Synthesizer & Audio Nodes), HTML5 Canvas API
-- **Design System:** Custom Vanilla CSS with Glassmorphism, CSS Gradients, Micro-animations, Google Fonts (Cinzel, Inter, JetBrains Mono, Fredoka One, Quicksand)
-- **Tools:** Git, GitHub, VS Code
+
+Languages used: HTML, CSS, JavaScript
+Frameworks used: None
+Libraries used: None
+Tools used: VS Code / Antigravity IDE, Git, GitHub
+Other components: SVG, HTML5 Audio, CSS animations & transitions, GitHub Pages for deployment
 
 For Hardware:
 - N/A (Pure Software Application)
 
 ### Implementation
 For Software:
+Developed a static web application using HTML, CSS, and Vanilla JavaScript.
+Created an interactive virtual guitar where users can click and play individual strings.
+Implemented string-breaking logic with audio effects and visual state changes.
+Added dynamic acoustic telemetry, waveform visualizations, system warnings, and glitch effects as strings are lost.
+Implemented a cinematic final reveal with the final image and dialogue audio after all strings are broken.
+Used CSS animations and JavaScript DOM manipulation to create the interactive experience.
+Deployed the project using GitHub Pages.
+
 # Installation
 ```bash
 git clone https://github.com/riyaannakf/useless_project_temp.git
 cd useless_project_temp/stratos
 ```
+git clone <repository-url>
+cd STRATOS
 
 # Run
 Open `index.html` directly in your browser or run a local static server (e.g. VS Code Live Server).
@@ -57,24 +73,40 @@ For Software:
 
 # Diagrams
 ```
-+-------------------------------------------------------------------+
-|                        STRATOS DASHBOARD                          |
-|  [ Acoustic Spectrum Visualizer ]  [ Real-time Frequency Readouts ]|
-+-------------------------------------------------------------------+
-                                  |
-                                  v
-+-------------------------------------------------------------------+
-|                   GUITAR WORKSTATION MATRIX                       |
-|   Strings [1] [2] [3] [4] [5] [6] (Interactive Audio Pluck)       |
-+-------------------------------------------------------------------+
-                                  |
-               (7s interval string breakage mechanism)
-                                  v
-+-------------------------------------------------------------------+
-|                    SYSTEM STATUS STATE MACHINE                    |
-|  Optimal (6) -> Minor Anomaly (5) -> Degraded (4) -> Critical (3)  |
-|                  -> Panicking 💔 (2) -> Pookie Mode 🥺 (1)       |
-+-------------------------------------------------------------------+
+┌─────────────────────┐
+│   STRATOS Landing   │
+│       Page          │
+└──────────┬──────────┘
+           ↓
+┌─────────────────────┐
+│ Initialize Acoustic │
+│      System         │
+└──────────┬──────────┘
+           ↓
+┌─────────────────────┐
+│   Play Guitar       │
+│   Strings           │
+└──────────┬──────────┘
+           ↓
+┌─────────────────────┐
+│ String Breaks +     │
+│ Audio/Visual Update │
+└──────────┬──────────┘
+           ↓
+┌─────────────────────┐
+│ System Degradation  │
+│ & Panic Mode        │
+└──────────┬──────────┘
+           ↓
+┌─────────────────────┐
+│   Final String      │
+│      Breaks         │
+└──────────┬──────────┘
+           ↓
+┌─────────────────────┐
+│ Cinematic Uncle     │
+│ Reveal + Audio      │
+└─────────────────────┘
 ```
 *System Workflow & Degradation State Machine*
 
